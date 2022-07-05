@@ -7,17 +7,17 @@ Robot::Robot(){
     this->angle = 0;
 }//end contsructor
 
-void Robot::moveFwd(){
-    fL.moveFwd();
-    fR.moveBackwd();
+void Robot::move_fwd(){
+    fL.move_fwd();
+    fR.move_backwd();
 }
 
-void Robot::moveBackwd(){
-    fL.moveBackwd();
-    fR.moveFwd();
+void Robot::move_backwd(){
+    fL.move_backwd();
+    fR.move_fwd();
 }
 
-void Robot::turn30CW(){ //servo
+void Robot::turn30cw(){ //servo
     
 }
 
@@ -25,18 +25,26 @@ float Robot::getAngle(){ //imu
     return 1.0;
 }
 
-float Robot::PID(float commanded, float measured, float dt,float kp,float ki, float kd){ //imu
-    return 1.0;
+/* this function outputs a control signal, which is sent to an acturator 
+commanded, kp, ki, kd: user inputs
+measured: the sensor measuremnts
+dt: comes from void loop; the time between calls to PID()  
+*/
+float Robot::pid(float commanded, float measured, float dt,float kp, float ki, float kd){ //imu
+    return this->proportional(commanded, measured, kp) + this->integral(commanded, measured, ki, dt) + this->derivative(commanded, measured, kd, dt); 
 }
 
-float Robot::_proportional(float commanded, float measured, float kp){
+float Robot::proportional(float commanded, float measured, float kp){
     return kp*(commanded-measured); 
 }
-float Robot::_integral(float commanded, float measured, float Ki, float dt){
-    this->PID_integral_part += (Ki*(commanded - measured)) / dt;
-    return this->PID_integral_part;
+float Robot::integral(float commanded, float measured, float Ki, float dt){
+    this->pid_integral_part += (Ki*(commanded - measured)) / dt;
+    return this->pid_integral_part;
 }
 
-float Robot::_derivative(float commanded, float measured, float Kd, float dt){
-    return Kd*((commanded - measured) - this->PID_last_error ) *dt;
+float Robot::derivative(float commanded, float measured, float Kd, float dt){
+    float delta_error = (commanded - measured) - this->pid_last_error;
+    float error_part =  Kd* (delta_error*dt);
+    this->pid_last_error = commanded - measured;
+    return error_part;
 }

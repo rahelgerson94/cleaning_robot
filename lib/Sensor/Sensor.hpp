@@ -3,8 +3,9 @@
 class Sensor{
     public:
     Sensor();
-     void init();
-     void calibrate();
+    void init();
+    void calibrate();
+    
     private:
     //
 };

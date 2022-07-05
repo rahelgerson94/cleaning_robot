@@ -8,7 +8,7 @@ Wheel::Wheel(int pwmPin){
 
 Wheel::Wheel(){}
 
-void Wheel::moveFwd(){ 
+void Wheel::move_fwd(){ 
     /*
     int newPosititon = this->position + 360; 
     this->servoObj.write(newPosititon);
@@ -17,7 +17,7 @@ void Wheel::moveFwd(){
     this->servoObj.write(360);
 }
 
-void Wheel::moveBackwd(){ 
+void Wheel::move_backwd(){ 
     /*
     int newPosititon = this->position - 360; 
     this->servoObj.write(newPosititon);

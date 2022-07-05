@@ -15,8 +15,8 @@ class Wheel{
     public:
         Wheel(int pwmPin);
         Wheel();
-        void moveFwd();
-        void moveBackwd();
+        void move_fwd();
+        void move_backwd();
         
         
         
