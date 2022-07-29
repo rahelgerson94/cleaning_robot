@@ -4,19 +4,18 @@
 #include <Servo.h>
 
 using  uint = unsigned int;
-class Wheel{
+//class class_name : access_specifier parent_name{ };
+class Wheel: public Servo{ 
     private:
         int pwmPin;
-        
         int position = 0; //initial position of the servo
-    public:
-        Servo servoObj;
     private:
+
     public:
         Wheel(int pwmPin);
         Wheel();
-        void move_fwd();
-        void move_backwd();
+        //void move_fwd();
+        //void move_backwd();
         
         
         

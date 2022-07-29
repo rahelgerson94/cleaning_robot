@@ -1,25 +1,26 @@
 // Basic demo for accelerometer readings from Adafruit MPU6050
-#include "Robot.hpp"
-#include "icm20948.hpp"
-
+//#include "Robot.hpp"
+#include "Wheel.hpp"
 #include <Wire.h>
 #include <Servo.h>
-Robot R = Robot();
-Wheel Left(6); 
-Wheel Right(9);
-
+//float testPID(float commanded, float measured_range[2], const float dt, const float kp, const float ki, const float kd, int num_ite, Robot robo);
+//Robot R = Robot();
+//Wheel Left(6); 
+//Wheel Right(9);
+Wheel Left( ); 
+Wheel Right( );
 void setup(){
   Serial.begin(115200);
-  Left.servoObj.attach(6);
-  Right.servoObj.attach(9);
+  Left.attach(6);
+  Right.attach(9);
 
 }
 
 void loop(){
   //R.moveFwd();
-  Left.servoObj.write(0); //left is a touch faster 
-  Right.servoObj.write(130);
-  
+  Left.write(0); //left is a touch faster 
+  Right.write(130);
+
   //Serial.println("moved fwd");
 }
 
@@ -43,7 +44,7 @@ double KFilt(double U){
 }
 
 
-float testPID(float commanded, float measured_range[2], const float dt, const float kp, const float ki, const float kd, int num_ite, Robot robo){
+/* float testPID(float commanded, float measured_range[2], const float dt, const float kp, const float ki, const float kd, int num_ite, Robot robo){
   /* 
   purpose: find the min, max values that robot::pid() outputs
   so that we can map those values to actual sensor values.
@@ -69,4 +70,4 @@ float testPID(float commanded, float measured_range[2], const float dt, const fl
     }
   }
 
-}//end testPID
+}//end testPID */

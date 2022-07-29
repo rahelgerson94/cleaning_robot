@@ -7,15 +7,15 @@ Robot::Robot(){
     this->angle = 0;
 }//end contsructor
 
-void Robot::move_fwd(){
-    fL.move_fwd();
-    fR.move_backwd();
+/* void Robot::move_fwd(){
+    fL.move_fwd(); //write 0 to left
+    fR.move_backwd(); //write 130 to right
 }
 
 void Robot::move_backwd(){
     fL.move_backwd();
     fR.move_fwd();
-}
+} */
 
 void Robot::turn30cw(){ //servo
     
@@ -30,7 +30,7 @@ commanded, kp, ki, kd: user inputs
 measured: the sensor measuremnts
 dt: comes from void loop; the time between calls to PID()  
 */
-float Robot::pid(float commanded, float measured, float dt,float kp, float ki, float kd){ //imu
+float Robot::pid(float commanded, float measured, float dt, float kp, float ki, float kd){ //imu
     return this->proportional(commanded, measured, kp) + this->integral(commanded, measured, ki, dt) + this->derivative(commanded, measured, kd, dt); 
 }
 

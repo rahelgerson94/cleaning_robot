@@ -1,4 +1,4 @@
-#include <Arduino.h>
+/* #include <Arduino.h>
 #include <Math.h>
 
 #include "icm20948.hpp"
@@ -13,31 +13,10 @@ void setup() {
   imu.init();
   Serial.println("done init");
   curr_time = 0;
-  imu.calibrate(); //calibrate_gyro(), calibrate_magn()
-  imu.get_heading_offset(); 
+  //imu.calibrate(); //calibrate_gyro(), calibrate_magn()
+  //imu.get_heading_offset(); 
   
-
-  /* imu.get_heading_offset();
-    while(true){
-        imu.read_imu(); //update gx, gy, gz, mx, my, mz, ax, ay, az
-        imu.correct_magn();
-        Serial.println(imu.yaw_raw() - imu.yaw_offset);
-    }
-     */
   Serial.println("yaw_raw");
-  //Serial.println("mx\tmy\tmz");
-
-  //Serial.println("yaw_filt\tyaw_raw");
-  /* //for (int i = 0; i < 10; i++){
-    for (int i = 0; i < 1000; i++){
-      dt = micros() - curr_time;
-      curr_time = micros();
-      imu.update_all(dt/1000000.0);
-      Serial.println(imu.yaw);
-      delay(3);
-    }
-    Serial.println("$");
-  //} */
 }
 
 
@@ -50,11 +29,6 @@ void loop() {
   /* imu.read_imu(); //update gx, gy, gz, mx, my, mz, ax, ay, az
   imu.correct_magn();
   Serial.println(imu.yaw_raw() - imu.yaw_offset); */
-
-
- /*  Serial.print(imu.mx); Serial.print(", ");
-  Serial.print(imu.my); Serial.print(", ");
-  Serial.println(imu.mz);  */
 
   //float yaw_filt = imu.yaw;
   //float yaw_raw = atan2f(-imu.my,imu.mx)*(180/PI);
@@ -82,3 +56,4 @@ void printXYZ_loop(float x, float y, float z, char name ){
     Serial.print(name);   Serial.print(z); Serial.print(" , ");
 }
 
+ */
